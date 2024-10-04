@@ -54,7 +54,7 @@ cor(SIMS~ARM,data=data)
 ```{r}
 summary.lm(model.1)
 ```
-Model.1 show that the intercept 4.095 and coefficient 0.055 of ARM are both of these significantly different from 0.   
+Model.1 show that the intercept -4.095 and coefficient 0.055 of ARM are both of these significantly different from 0.   
 
 #### Predict at target point
 
@@ -63,7 +63,7 @@ targtPoint = data.frame(GRIP=94, ARM=88)
 predictInt = predict(model.1, targtPoint, interval = 'prediction')
 print(predictInt)
 ```
-This reflects ARM=88, GRIP=94 the predicted SIMS score is 0.71 The 95% confidence interval for that score is SIMS between -1.73 and 3.19.
+This reflects ARM=88, GRIP=94 the predicted SIMS score is 0.71 The 95% confidence interval for that score is SIMS between -1.73 and 3.14.
 
 #### scatterplot with model fit
 
@@ -94,7 +94,7 @@ cor(SIMS~GRIP,data=data)
 summary.lm(model.2)
 ```
 
-Model.2 show that the intercept 4.81 and coefficient 0.045 of GRIP are both of these significantly different from 0.  
+Model.2 show that the intercept -4.81 and coefficient 0.045 of GRIP are both of these significantly different from 0.  
 
 #### predict model.2 at target point
 
@@ -114,14 +114,14 @@ model.3 = lm(SIMS~ARM+GRIP, data=data)
 summary(model.3)
 ```
 
-Model.3 show that the intercept -5.43 and coefficient 0.037 of ARM and 0.24 of GRIP are significantly different from 0. The P Value for both is lower than 0.05.
+Model.3 show that the intercept -5.434 and coefficient 0.0338 of ARM and 0.025 of GRIP are significantly different from 0. The P Value for both is lower than 0.05.
 
 ### Numerical results (cor)
 
 ```{r}
 cor(data)
 ```
-SIMS correlates GRIP and ARM with these values
+This shows SIMS correlates GRIP and ARM with the values
 
 ### Inferential  (Build 2-dimentional model.3)
 
@@ -130,7 +130,7 @@ SIMS correlates GRIP and ARM with these values
 ```{r}
 predict(model.3, targtPoint, interval='prediction')
 ```
-This reflects ARM=88, GRIP=94 the predicted SIMS score is .15 The 95% confidence interval the score is SIMS between -2.13 and 2.44.  
+This reflects ARM=88, GRIP=94 the predicted SIMS score is 0.15 The 95% confidence interval the score is SIMS between -2.13 and 2.44.  
 
 ## Comparing nested models ANOVA Test
 
@@ -143,11 +143,11 @@ This reflects ARM=88, GRIP=94 the predicted SIMS score is .15 The 95% confidence
 anova_results = anova(model.1,model.3)
 print(anova_results)
 ```
-Model 2 is much better than model 1 because the p value in comparison is less than 0.05
+Model 2 is much better than model 1 because the p value in comparison is less than 0.05. The P Value is 0.000004994
 
 
 ```{r}
 anova_results = anova(model.2,model.3)
 print(anova_results)
 ```
-Model 3 is much better than model 2 because the p value in comparison is less than 0.05
+Model 3 is much better than model 2 because the p value in comparison is less than 0.05. The PValue is 0.000000001495
