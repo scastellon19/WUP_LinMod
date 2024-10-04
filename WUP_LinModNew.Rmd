@@ -114,7 +114,7 @@ model.3 = lm(SIMS~ARM+GRIP, data=data)
 summary(model.3)
 ```
 
-Model.3 show that the intercept 5.43 and coefficient 0.037 of ARM and 0.24 of GRIP. The P Value for both is lower than 0.05.
+Model.3 show that the intercept -5.43 and coefficient 0.037 of ARM and 0.24 of GRIP are significantly different from 0. The P Value for both is lower than 0.05.
 
 ### Numerical results (cor)
 
@@ -130,7 +130,7 @@ SIMS correlates GRIP and ARM with these values
 ```{r}
 predict(model.3, targtPoint, interval='prediction')
 ```
-This reflects ARM=88, GRIP=94 the predicted SIMS score is -0.54 The 95% confidence interval the score is SIMS between -3.10 and 2.04
+This reflects ARM=88, GRIP=94 the predicted SIMS score is .15 The 95% confidence interval the score is SIMS between -2.13 and 2.44.  
 
 ## Comparing nested models ANOVA Test
 
@@ -143,11 +143,11 @@ This reflects ARM=88, GRIP=94 the predicted SIMS score is -0.54 The 95% confiden
 anova_results = anova(model.1,model.3)
 print(anova_results)
 ```
-Model 2 is much better than model 1 becuase the p value in comparison is less than 0.05
+Model 2 is much better than model 1 because the p value in comparison is less than 0.05
 
 
 ```{r}
 anova_results = anova(model.2,model.3)
 print(anova_results)
 ```
-Model 3 is much better than model 1 because the p value in comparison is less than 0.05
+Model 3 is much better than model 2 because the p value in comparison is less than 0.05
